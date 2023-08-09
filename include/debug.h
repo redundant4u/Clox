@@ -1,9 +1,9 @@
 #ifndef clox_debug_h
 #define clox_debug_h
 
-#include "chuck.h"
+#include "chunk.h"
 
-void disassembleChuck(Chuck *chuck, const char *name);
-int disassembleInstruction(Chuck *chuck, int offset);
+void disassembleChunk(Chunk *chunk, const char *name);
+int disassembleInstruction(Chunk *chunk, int offset);
 
 #endif
