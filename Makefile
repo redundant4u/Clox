@@ -1,9 +1,11 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -Iinclude
+
 SRC=$(wildcard src/*.c)
+OUTPUT=main
 
 build:
-	$(CC) $(CFLAGS) -o main $(SRC)
+	$(CC) $(CFLAGS) -o $(OUTPUT) $(SRC)
 
 clean:
-	rm main
+	rm $(OUTPUT)
