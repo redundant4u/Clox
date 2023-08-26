@@ -99,7 +99,7 @@ static void skipWhitespace() {
             }
             break;
         default:
-            break;
+            return;
         }
     }
 }
@@ -140,6 +140,8 @@ static TokenType identiferType() {
         return checkKeyword(1, 2, "il", TOKEN_NIL);
     case 'o':
         return checkKeyword(1, 1, "r", TOKEN_OR);
+    case 'p':
+        return checkKeyword(1, 4, "rint", TOKEN_PRINT);
     case 'r':
         return checkKeyword(1, 5, "eturn", TOKEN_RETURN);
     case 's':
@@ -164,7 +166,7 @@ static TokenType identiferType() {
 }
 
 static Token identifer() {
-    while (isAlpha(peek() || isDigit(peek()))) {
+    while (isAlpha(peek()) || isDigit(peek())) {
         advance();
     }
     return makeToken(identiferType());
@@ -204,6 +206,10 @@ static Token number() {
 Token scanToken() {
     skipWhitespace();
     scanner.start = scanner.current;
+
+    if (isAtEnd()) {
+        return makeToken(TOKEN_EOF);
+    }
 
     char c = advance();
 
@@ -247,10 +253,6 @@ Token scanToken() {
         return makeToken(match('=') ? TOKEN_GREATER_EQUAL : TOKEN_GREATER);
     case '"':
         return string();
-    }
-
-    if (isAtEnd()) {
-        return makeToken(TOKEN_EOF);
     }
 
     return errorToken("Unexpected character.");
