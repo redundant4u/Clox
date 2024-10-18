@@ -12,6 +12,7 @@ make
 
 ## Update
 
+- 241013: Add hash table ([Chapter20]https://www.craftinginterpreters.com/hash-tables.html)
 - 231001: Add string object ([Chapter19](https://www.craftinginterpreters.com/strings.html))
 - 230902: Add number, bool, nil types([Chapter18](https://www.craftinginterpreters.com/types-of-values.html))
 - 230826: Add compiling expressions([Chapter17](https://www.craftinginterpreters.com/compiling-expressions.html#parsing-infix-expressions))
